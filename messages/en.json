@@ -1,0 +1,47 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "Hero": {
+    "title": "Iprint Designs & Printing House",
+    "subtitle": "High Quality, Continuity, Fast Execution.",
+    "cta": "Get a Quote"
+  },
+  "Services": {
+    "title": "Our Services",
+    "advertising": "Advertising",
+    "uvPrinting": "UV Printing",
+    "indoorPrinting": "Indoor Printing",
+    "digitalPrinting": "Digital Printing",
+    "design": "Design Services"
+  },
+  "Clients": {
+    "title": "Our Prestige Clients"
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "address": "32 Abd El-Aziz El-Sayed, Huckstep, El Nozha, Cairo, Egypt",
+    "phone": "+20 10 29769707",
+    "email": "info.iprintuv@gmail.com"
+  },
+  "Admin": {
+    "dashboardTitle": "Admin Dashboard",
+    "logout": "Logout",
+    "manageGallery": "Manage Gallery",
+    "manageGalleryDesc": "Add, edit, or remove images from the portfolio. (Requires Supabase Database Tables setup)",
+    "openGalleryManager": "Open Gallery Manager",
+    "manageServices": "Manage Services",
+    "manageServicesDesc": "Update service descriptions and icons. (Requires Supabase Database Tables setup)",
+    "openServicesManager": "Open Services Manager",
+    "loginTitle": "Admin Login",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "loginButton": "Login to CMS",
+    "authenticating": "Authenticating...",
+    "loading": "Loading Admin..."
+  }
+}

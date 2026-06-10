@@ -1,0 +1,177 @@
+import { setRequestLocale } from 'next-intl/server';
+
+const categories = [
+  {
+    title: "اللافتات الإرشادية الداخلية والخارجية",
+    icon: "🏷️",
+    items: [
+      "لافتات معدنية داخل المباني",
+      "لافتات بلاستيكية داخل المباني",
+      "لافتات معدنية خارج المباني",
+      "لافتات بلاستيكية خارج المباني",
+      "لافتات إرشادية للشركات",
+      "لافتات إرشادية للمستشفيات",
+      "لافتات إرشادية للمدارس",
+      "لافتات إرشادية للمصانع والمؤسسات",
+    ],
+  },
+  {
+    title: "استاندات العرض",
+    icon: "🖼️",
+    items: [
+      "Rollup Banners",
+      "Popup Displays",
+      "X Banners",
+      "استاندات معارض خارجية",
+      "استاندات داخل الشركات",
+      "تصميم سهل الفك والنقل",
+    ],
+  },
+];
+
+const galleryImages = [
+  "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1596008194705-2091cd6764d4?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+];
+
+const bannerTypes = [
+  { name: "Roll Up", desc: "سهلة الحمل والتركيب، مثالية للمعارض والفعاليات", icon: "🎞️" },
+  { name: "Pop Up", desc: "خلفيات عرض كبيرة وانطباع احترافي قوي", icon: "📸" },
+  { name: "X Banner", desc: "اقتصادية وخفيفة، تُستخدم في المحلات والمكاتب", icon: "✖️" },
+];
+
+export default async function SignsPage(
+  props: { params: Promise<{ locale: string }> }
+) {
+  const { locale } = await props.params;
+  setRequestLocale(locale);
+
+  return (
+    <div className="w-full">
+      {/* Hero */}
+      <section className="relative py-28 overflow-hidden text-white"
+        style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #0d1b2a 50%, #c2185b 100%)" }}
+      >
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=40')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1 rounded-full mb-6 border border-white/30">
+            خدماتنا
+          </span>
+          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
+            يفط ولافتات
+          </h1>
+          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+            جميع أنواع اللافتات الإرشادية المعدنية والبلاستيكية داخل المباني وخارجها — للشركات والمستشفيات والمدارس والمصانع والمؤسسات.
+          </p>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold mb-4">ما نقدمه</h2>
+            <div className="w-24 h-1.5 bg-brand-pink mx-auto rounded-full" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {categories.map((cat, i) => (
+              <div
+                key={i}
+                className="group bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-lg border border-slate-100 dark:border-slate-800 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-3xl mb-5 group-hover:scale-110 transition-transform">
+                  {cat.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">{cat.title}</h3>
+                <ul className="space-y-2">
+                  {cat.items.map((item, j) => (
+                    <li key={j} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-blue flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Banner Types Highlight */}
+      <section className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">استاندات العرض المتنقلة</h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              سهلة الفك والنقل — مثالية للمعارض والشركات والفعاليات
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {bannerTypes.map((type, i) => (
+              <div
+                key={i}
+                className="bg-white dark:bg-slate-900 rounded-2xl p-8 text-center shadow-md border border-slate-100 dark:border-slate-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="text-5xl mb-4">{type.icon}</div>
+                <h3 className="text-2xl font-black mb-3 text-brand-blue">{type.name}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{type.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-4xl font-bold mb-4">من أعمالنا</h2>
+            <div className="w-24 h-1.5 bg-brand-blue mx-auto rounded-full" />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryImages.map((src, i) => (
+              <div key={i} className="relative aspect-video overflow-hidden rounded-2xl group shadow-md">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={`Sign work ${i + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900/50 text-center border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-2xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">تحتاج لافتة أو يافطة لعملك؟</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
+            تواصل معنا عبر واتساب وسنقدم لك أفضل عرض سعر فوراً
+          </p>
+          <a
+            href="https://wa.me/201029769707"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform"
+          >
+            💬 تواصل عبر واتساب
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,47 @@
+{
+  "Navigation": {
+    "home": "الرئيسية",
+    "services": "خدماتنا",
+    "gallery": "معرض الأعمال",
+    "contact": "اتصل بنا",
+    "admin": "لوحة التحكم"
+  },
+  "Hero": {
+    "title": "آي برينت للتصميم والطباعة",
+    "subtitle": "جودة عالية، استمرارية، تنفيذ سريع بدون تأخير.",
+    "cta": "اطلب عرض سعر"
+  },
+  "Services": {
+    "title": "خدماتنا",
+    "advertising": "الدعاية والإعلان",
+    "uvPrinting": "طباعة UV",
+    "indoorPrinting": "الطباعة الداخلية (Indoor)",
+    "digitalPrinting": "الطباعة الرقمية",
+    "design": "خدمات التصميم"
+  },
+  "Clients": {
+    "title": "عملائنا المميزون"
+  },
+  "Contact": {
+    "title": "اتصل بنا",
+    "address": "32 شارع عبد العزيز السيد، الهايكستب، النزهة، القاهرة، مصر",
+    "phone": "+20 10 29769707",
+    "email": "info.iprintuv@gmail.com"
+  },
+  "Admin": {
+    "dashboardTitle": "لوحة تحكم الإدارة",
+    "logout": "تسجيل الخروج",
+    "manageGallery": "إدارة معرض الصور",
+    "manageGalleryDesc": "إضافة، تعديل أو إزالة صور من المعرض. (يتطلب إعداد جداول Supabase)",
+    "openGalleryManager": "فتح مدير الصور",
+    "manageServices": "إدارة الخدمات",
+    "manageServicesDesc": "تحديث أوصاف الخدمات وأيقوناتها. (يتطلب إعداد جداول Supabase)",
+    "openServicesManager": "فتح مدير الخدمات",
+    "loginTitle": "تسجيل دخول الإدارة",
+    "emailLabel": "البريد الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "loginButton": "تسجيل الدخول",
+    "authenticating": "جاري التحقق...",
+    "loading": "جاري تحميل لوحة التحكم..."
+  }
+}
