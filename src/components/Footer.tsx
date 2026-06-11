@@ -12,6 +12,18 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               Designs & Printing House. High quality, continuity, fast execution.
             </p>
+                          <p className="mt-4 block w-full clear-both">
+
+    <a
+      href="https://www.facebook.com/profile.php?id=61563756885626"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white hover:text-blue-500 transition-colors text-sm font-bold bg-blue-600 px-4 py-2 rounded inline-block text-center shadow-md"
+
+    >
+      صفحتنا على فيسبوك
+    </a>
+  </p>
           </div>
           <div>
             <h4 className="text-white font-semibold mb-4">{tContact("title")}</h4>
@@ -35,6 +47,7 @@ export default function Footer() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="iPrint Location Footer"
               />
+
             </div>
           </div>
         </div>
