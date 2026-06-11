@@ -5,22 +5,19 @@ const giftItems = [
   { name: "ميداليات", icon: "🏅", desc: "ميداليات تذكارية راقية مناسبة للمناسبات والتكريم" },
   { name: "بلوك نوت", icon: "📓", desc: "دفاتر ملاحظات مطبوعة بهويتك البصرية" },
   { name: "كوستر", icon: "🥏", desc: "كوسترات دعائية أنيقة للمكاتب والمطاعم" },
-  { name: "ماجناتيك", icon: "🧲", desc: "مغناطيسات إعلانية للثلاجات والأسطح المعدنية" },
-  { name: "تي شيرتات", icon: "👕", desc: "تيشرتات مطبوعة بتصاميمك — ترويج متنقل لعلامتك" },
   { name: "مجات", icon: "☕", desc: "أكواب قهوة وشاي مطبوعة بشعار الشركة" },
-  { name: "كابات", icon: "🧢", desc: "قبعات دعائية مميزة لفريق عملك وعملائك" },
   { name: "نتائج مكتب", icon: "🗂️", desc: "لوازم مكتبية دعائية لإبراز هويتك في بيئة العمل" },
   { name: "نتائج حائط", icon: "🖼️", desc: "لوحات حائط دعائية لتزيين المكاتب والصالات" },
   { name: "ساعات حائط", icon: "🕐", desc: "ساعات حائط مطبوعة بشعارك — هدية عملية وأنيقة" },
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+  "/images/gift-1.jpeg",
+  "/images/gift-2.jpg",
+  "/images/gift-3.jpeg",
+  "/images/gift-4.jpg",
+  "/images/gift-5.jpeg",
+  "/images/gift-6.jpg",
 ];
 
 export default async function GiftsPage(

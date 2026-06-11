@@ -5,10 +5,8 @@ const categories = [
     title: "اللافتات الإرشادية الداخلية والخارجية",
     icon: "🏷️",
     items: [
-      "لافتات معدنية داخل المباني",
-      "لافتات بلاستيكية داخل المباني",
-      "لافتات معدنية خارج المباني",
-      "لافتات بلاستيكية خارج المباني",
+      "لافتات معدنية و بلاستيكية داخل المباني",
+      "لافتات معدنية و بلاستيكية خارج المباني",
       "لافتات إرشادية للشركات",
       "لافتات إرشادية للمستشفيات",
       "لافتات إرشادية للمدارس",
@@ -20,7 +18,6 @@ const categories = [
     icon: "🖼️",
     items: [
       "Rollup Banners",
-      "Popup Displays",
       "X Banners",
       "استاندات معارض خارجية",
       "استاندات داخل الشركات",
@@ -30,12 +27,12 @@ const categories = [
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1596008194705-2091cd6764d4?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+  "/images/roll-1.jpg",
+  "/images/roll-2.jpg",
+  "/images/roll-3.jpg",
+  "/images/roll-4.jpg",
+  "/images/roll-5.jpg",
+  "/images/roll-6.jpg",
 ];
 
 const bannerTypes = [

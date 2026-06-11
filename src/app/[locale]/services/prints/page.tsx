@@ -12,34 +12,19 @@ const printCategories = [
     items: ["خطاب شركة", "أظرف", "نتيجة مكتب", "نتيجة حائط", "أجندات", "بلوك نوت", "دفاتر الفواتير والايصالات"],
   },
   {
-    title: "مطبوعات المطاعم والضيافة",
-    icon: "🍽️",
-    items: ["منيو", "مناديل", "شاليموه", "كوسترز", "مفرش ورقي", "دفاتر كابتن أوردر", "صناديق الديليفري"],
-  },
-  {
     title: "المطبوعات التعليمية والترويجية",
     icon: "📚",
     items: ["كتب جامعات", "إمساكيات رمضان", "علبة مناديل", "العلب", "ماجناتيك", "كوستر فل"],
   },
-  {
-    title: "طباعة الملابس والأكسسوار",
-    icon: "👕",
-    items: ["طباعة يونيفورم", "طباعة كابات"],
-  },
-  {
-    title: "طباعة الوسائط الرقمية",
-    icon: "💿",
-    items: ["كفر سي دي", "استيكر سي دي", "طباعة ونسخ CD"],
-  },
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1541278107931-e006523892df?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1524578271613-d550eacf6090?auto=format&fit=crop&w=800&q=80",
+  "/images/prints-1.jpeg",
+  "/images/prints-2.jpeg",
+  "/images/prints-3.jpeg",
+  "/images/prints-4.jpeg",
+  "/images/prints-5.jpeg",
+  "/images/prints-6.jpeg",
 ];
 
 export default async function PrintsPage(

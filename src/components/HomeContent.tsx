@@ -40,6 +40,12 @@ export default function HomeContent() {
     { name: "Coca-Cola", logo: "/clients/coca-cola.png" },
     { name: "مؤسسة السفير العلمية", logo: "/clients/safeer.png" },
     { name: "Caribou Coffee", logo: "/clients/caribou.png" },
+    { name: "Elegant Care", logo: "/clients/elegant-care.png" },
+    { name: "bank", logo: "/clients/bank.png" },
+    { name: "GSK", logo: "/clients/gsk.png" },
+    { name: "Schweppes", logo: "/clients/Schweppes.png" },
+    { name: "solex.tech", logo: "/clients/solex-tech.jpg" },
+    { name: "aldau", logo: "/clients/aldau.webp" },
     { name: "Daily Fresh", logo: "/clients/daily-fresh.png", isTextLogo: true }
   ];
 
