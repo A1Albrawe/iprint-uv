@@ -6,6 +6,7 @@ import { Inter, Cairo } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Loader from '@/components/Loader'; // 1. استدعاء اللودر
 import '../globals.css';
 import type { Metadata } from 'next';
 
@@ -26,7 +27,7 @@ export default async function LocaleLayout(
   const params = await props.params;
   const { locale } = params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
 
@@ -37,6 +38,9 @@ export default async function LocaleLayout(
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <body className={`${fontClass} font-sans antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-300 min-h-screen flex flex-col`}>
+        {/* 2. وضع اللودر هنا ليعمل فوق كل شيء */}
+        <Loader /> 
+        
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             <Navbar />

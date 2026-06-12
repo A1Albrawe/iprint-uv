@@ -1,27 +1,28 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
+// 💡 تقسيم عناصر المصفوفة بشكل ذكي للتفريق بين مفاتيح الترجمة والنصوص المباشرة
 const categories = [
   {
-    title: "اللافتات الإرشادية الداخلية والخارجية",
+    titleKey: "allaftat-alirshadyh-aldakhlyh-walkharjyh",
     icon: "🏷️",
     items: [
-      "لافتات معدنية و بلاستيكية داخل المباني",
-      "لافتات معدنية و بلاستيكية خارج المباني",
-      "لافتات إرشادية للشركات",
-      "لافتات إرشادية للمستشفيات",
-      "لافتات إرشادية للمدارس",
-      "لافتات إرشادية للمصانع والمؤسسات",
+      { type: "key", value: "laftat-madnyh-w-blastykyh-dakhl-almbany" },
+      { type: "key", value: "laftat-madnyh-w-blastykyh-kharj-almbany" },
+      { type: "key", value: "laftat-irshadyh-llshrkat" },
+      { type: "key", value: "laftat-irshadyh-llmstshfyat" },
+      { type: "key", value: "laftat-irshadyh-llmdars" },
+      { type: "key", value: "laftat-irshadyh-llmsana-walmussat" },
     ],
   },
   {
-    title: "استاندات العرض",
+    titleKey: "astandat-alardh",
     icon: "🖼️",
     items: [
-      "Rollup Banners",
-      "X Banners",
-      "استاندات معارض خارجية",
-      "استاندات داخل الشركات",
-      "تصميم سهل الفك والنقل",
+      { type: "raw", value: "Rollup Banners" },
+      { type: "raw", value: "X Banners" },
+      { type: "key", value: "astandat-maardh-kharjyh" },
+      { type: "key", value: "astandat-dakhl-alshrkat" },
+      { type: "key", value: "tsmym-shl-alfk-walnql" },
     ],
   },
 ];
@@ -36,9 +37,9 @@ const galleryImages = [
 ];
 
 const bannerTypes = [
-  { name: "Roll Up", desc: "سهلة الحمل والتركيب، مثالية للمعارض والفعاليات", icon: "🎞️" },
-  { name: "Pop Up", desc: "خلفيات عرض كبيرة وانطباع احترافي قوي", icon: "📸" },
-  { name: "X Banner", desc: "اقتصادية وخفيفة، تُستخدم في المحلات والمكاتب", icon: "✖️" },
+  { name: "Roll Up", descKey: "shlh-alhml-waltrkyb-mthalyh-llmaardh-walfaalyat", icon: "🎞️" },
+  { name: "Pop Up", descKey: "khlfyat-ardh-kbyrh-wantbaa-ahtrafy-qwy", icon: "📸" },
+  { name: "X Banner", descKey: "aqtsadyh-wkhfyfh-tustkhdm-fy-almhlat-walmkatb", icon: "✖️" },
 ];
 
 export default async function SignsPage(
@@ -46,6 +47,9 @@ export default async function SignsPage(
 ) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+
+  // 💡 جلب دالة الترجمة الخاصة بالسيرفر
+  const t = await getTranslations();
 
   return (
     <div className="w-full">
@@ -63,13 +67,13 @@ export default async function SignsPage(
         />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1 rounded-full mb-6 border border-white/30">
-            خدماتنا
+           {t('khdmatna')}
           </span>
           <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            يفط ولافتات
+           {t('yft-wlaftat')}
           </h1>
           <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-            جميع أنواع اللافتات الإرشادية المعدنية والبلاستيكية داخل المباني وخارجها — للشركات والمستشفيات والمدارس والمصانع والمؤسسات.
+           {t('jmya-anwaa-allaftat-alirshadyh-almadnyh-walblastykyh-dakhl-almbany-wkharjha-llshrkat-walmstshfyat-walmdars-walmsana-walmussat')}
           </p>
         </div>
       </section>
@@ -78,7 +82,7 @@ export default async function SignsPage(
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">ما نقدمه</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('ma-nqdmh')}</h2>
             <div className="w-24 h-1.5 bg-brand-pink mx-auto rounded-full" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -90,12 +94,14 @@ export default async function SignsPage(
                 <div className="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-3xl mb-5 group-hover:scale-110 transition-transform">
                   {cat.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">{cat.title}</h3>
+                {/* 💡 ترجمة عنوان القسم الفرعي */}
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">{t(cat.titleKey)}</h3>
                 <ul className="space-y-2">
                   {cat.items.map((item, j) => (
                     <li key={j} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-blue flex-shrink-0" />
-                      {item}
+                      {/* 💡 فحص نوع العنصر: إذا كان مفتاحاً يتم ترجمته، وإذا كان نصاً عادياً يطبع كما هو */}
+                      {item.type === "key" ? t(item.value) : item.value}
                     </li>
                   ))}
                 </ul>
@@ -109,9 +115,9 @@ export default async function SignsPage(
       <section className="py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">استاندات العرض المتنقلة</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('astandat-alardh-almtnqlh')}</h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              سهلة الفك والنقل — مثالية للمعارض والشركات والفعاليات
+             {t('shlh-alfk-walnql-mthalyh-llmaardh-walshrkat-walfaalyat')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -122,7 +128,8 @@ export default async function SignsPage(
               >
                 <div className="text-5xl mb-4">{type.icon}</div>
                 <h3 className="text-2xl font-black mb-3 text-brand-blue">{type.name}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{type.desc}</p>
+                {/* 💡 ترجمة وصف الـ Banner ديناميكياً */}
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{t(type.descKey)}</p>
               </div>
             ))}
           </div>
@@ -133,7 +140,7 @@ export default async function SignsPage(
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">من أعمالنا</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('mn-aamalna')}</h2>
             <div className="w-24 h-1.5 bg-brand-blue mx-auto rounded-full" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -155,9 +162,9 @@ export default async function SignsPage(
       {/* CTA */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900/50 text-center border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">تحتاج لافتة أو يافطة لعملك؟</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('thtaj-lafth-aw-yafth-lamlk')}</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
-            تواصل معنا عبر واتساب وسنقدم لك أفضل عرض سعر فوراً
+           {t('twasl-mana-abr-watsab-wsnqdm-lk-afdhl-ardh-sar-fwraan')}
           </p>
           <a
             href="https://wa.me/201029769707"
@@ -165,7 +172,7 @@ export default async function SignsPage(
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform"
           >
-            💬 تواصل عبر واتساب
+            💬 {t('twasl-abr-watsab')}
           </a>
         </div>
       </section>

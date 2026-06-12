@@ -1,6 +1,5 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 
 export default async function Contact(
   props: {
@@ -11,15 +10,14 @@ export default async function Contact(
   const { locale } = params;
   setRequestLocale(locale);
 
-  // Next-intl works differently in async components on Next.js 15, let's just hardcode or import messages if it's dynamic
-  const phone = "+20 10 29769707";
-  const email = "info.iprintuv@gmail.com";
-  const address = "32 Abd El-Aziz El-Sayed, Huckstep, El Nozha, Cairo, Egypt";
+  // جلب الترجمة بطريقة متزامنة (Async) متوافقة تماماً مع Next.js 15
+  const t = await getTranslations();
+
   const whatsappUrl = `https://wa.me/201029769707`;
 
   return (
     <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <h1 className="text-4xl font-bold mb-10 text-center">Contact Us</h1>
+      <h1 className="text-4xl font-bold mb-10 text-center">{t('Contact.title')}</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
         {/* Contact Info */}
@@ -29,8 +27,8 @@ export default async function Contact(
               <MapPin size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">Address</h3>
-              <p className="text-slate-600 dark:text-slate-400 mt-1">{address}</p>
+              <h3 className="text-lg font-bold">{t('Contact.title')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 mt-1">{t('Contact.address')}</p>
             </div>
           </div>
 
@@ -39,8 +37,8 @@ export default async function Contact(
               <Phone size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">Phone</h3>
-              <p className="text-slate-600 dark:text-slate-400 mt-1" dir="ltr">{phone}</p>
+              <h3 className="text-lg font-bold">{t('Contact.phone')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 mt-1" dir="ltr">{t('Contact.phone')}</p>
             </div>
           </div>
 
@@ -49,23 +47,23 @@ export default async function Contact(
               <Mail size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">Email</h3>
-              <p className="text-slate-600 dark:text-slate-400 mt-1">{email}</p>
+              <h3 className="text-lg font-bold">{t('Contact.email')}</h3>
+              <p className="text-slate-600 dark:text-slate-400 mt-1">{t('Contact.email')}</p>
             </div>
           </div>
         </div>
 
         {/* WhatsApp CTA */}
         <div className="bg-gradient-to-br from-brand-blue to-brand-pink p-8 rounded-3xl text-white shadow-xl flex flex-col justify-center items-center text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to start?</h2>
-          <p className="mb-8 opacity-90 text-lg">Send us a message on WhatsApp and we will get back to you immediately.</p>
+          <h2 className="text-3xl font-bold mb-4">{t('mhtm-bhdaya-daaeyh-lshrktk')}</h2>
+          <p className="mb-8 opacity-90 text-lg">{t('twasl-mana-abr-watsab-wsnsaadk-fy-akhtyar-ansb-alhdaya-snansb-alhdaya-lamlaek')}</p>
           <a 
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-slate-900 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-lg w-full md:w-auto text-center flex items-center justify-center gap-2"
           >
-            Chat on WhatsApp
+            {t('twasl-abr-watsab')}
           </a>
         </div>
       </div>
@@ -77,8 +75,8 @@ export default async function Contact(
             <MapPin size={24} />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">موقعنا على الخريطة</h2>
-            <p className="text-slate-500 dark:text-slate-400 text-sm">٣٢ عبد العزيز السيد، الهايكستب، قسم النزهة، القاهرة</p>
+            <h2 className="text-2xl font-bold">{t('mwqana-ala-alkhryth')}</h2>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">{t('32-abd-alazyz-alsyd-alhaykstb-qsm-alnzhh-alqahrh')}</p>
           </div>
         </div>
         <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 h-96 w-full">
@@ -95,13 +93,13 @@ export default async function Contact(
         </div>
         <div className="mt-4 text-center">
           <a
-            href="https://www.google.com/maps/search/32+%D8%B9%D8%A8%D8%AF+%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2+%D8%A7%D9%84%D8%B3%D9%8A%D8%AF%D8%8C+%D8%A7%D9%84%D9%87%D8%A7%D9%8A%D9%83%D8%B3%D8%AA%D8%A8%D8%8C+%D9%82%D8%B3%D9%85+%D8%A7%D9%84%D9%86%D8%B2%D9%87%D8%A9%D8%8C+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9"
+            href="https://www.google.com/maps/search/32+%D8%B9%D8%A8%D8%AF+%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2+%D8%A7%D9%84%D8%B3%D9%8A%D8%AF%D8%8C+%D8%A7%D9%84%D9%87%D8%A7%D9%8A%D9%83%D8%B3%D8%AA%D8%A8%D8%8C+%D9%82%D8%B3%D9%85+%D8%A7%D9%84%D9%86%D8%B2%D9%87%D8%A9%D8%8C+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A7%D9%84%D2%A7%D8%A7%D9%87%D8%B1%D8%A9"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-brand-blue text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-opacity-90 transition-all shadow-md hover:-translate-y-0.5"
           >
             <MapPin size={16} />
-            افتح في خرائط جوجل
+           {t('afth-fy-khraet-jwjl')}
           </a>
         </div>
       </div>

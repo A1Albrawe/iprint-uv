@@ -1,5 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
 export default async function Gallery(
   props: {
@@ -9,6 +8,9 @@ export default async function Gallery(
   const params = await props.params;
   const { locale } = params;
   setRequestLocale(locale);
+
+  // 💡 جلب الترجمة بطريقة غير متزامنة (Async) متوافقة تماماً مع Next.js 15 والسيرفر
+  const t = await getTranslations();
 
   // Placeholders that can be replaced via CMS
   const images = [
@@ -43,7 +45,9 @@ export default async function Gallery(
 
   return (
     <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <h1 className="text-4xl font-bold mb-10 text-center">Gallery</h1>
+      {/* 💡 قمنا بربط العنوان بنطاق الـ Navigation ليقرأ كلمة "معرض الأعمال" ديناميكياً من الـ JSON */}
+      <h1 className="text-4xl font-bold mb-10 text-center">{t('Navigation.gallery')}</h1>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {images.map(img => (
           <div key={img.id} className="relative aspect-square overflow-hidden rounded-2xl group shadow-lg">

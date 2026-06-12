@@ -1,14 +1,15 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
+// 💡 مصفوفة الهدايا بمفاتيح نظيفة بدون استدعاء الدالة t هنا لمنع انهيار الصفحة
 const giftItems = [
-  { name: "أقلام دعائية", icon: "✒️", desc: "أقلام مخصصة بشعار شركتك — هدية عملية يستخدمها العميل يومياً" },
-  { name: "ميداليات", icon: "🏅", desc: "ميداليات تذكارية راقية مناسبة للمناسبات والتكريم" },
-  { name: "بلوك نوت", icon: "📓", desc: "دفاتر ملاحظات مطبوعة بهويتك البصرية" },
-  { name: "كوستر", icon: "🥏", desc: "كوسترات دعائية أنيقة للمكاتب والمطاعم" },
-  { name: "مجات", icon: "☕", desc: "أكواب قهوة وشاي مطبوعة بشعار الشركة" },
-  { name: "نتائج مكتب", icon: "🗂️", desc: "لوازم مكتبية دعائية لإبراز هويتك في بيئة العمل" },
-  { name: "نتائج حائط", icon: "🖼️", desc: "لوحات حائط دعائية لتزيين المكاتب والصالات" },
-  { name: "ساعات حائط", icon: "🕐", desc: "ساعات حائط مطبوعة بشعارك — هدية عملية وأنيقة" },
+  { nameKey: "aqlam-daaeyh", icon: "✒️", descKey: "aqlam-mkhssh-bshaar-shrktk-hdyh-amlyh-ystkhdmha-alamyl-ywmyaan" },
+  { nameKey: "mydalyat", icon: "🏅", descKey: "mydalyat-tthkaryh-raqyh-mnasbh-llmnasbat-waltkrym" },
+  { nameKey: "blwk-nwt", icon: "📓", descKey: "dfatr-mlahzat-mtbwah-bhwytk-albsryh" },
+  { nameKey: "kwstr", icon: "🥏", descKey: "kwstrat-daaeyh-anyqh-llmkatb-walmtaam" },
+  { nameKey: "mjat", icon: "☕", descKey: "akwab-qhwh-wshay-mtbwah-bshaar-alshrkh" },
+  { nameKey: "ntaej-mktb", icon: "🗂️", descKey: "lwazm-mktbyh-daaeyh-libraz-hwytk-fy-byeh-alaml" },
+  { nameKey: "ntaej-haet", icon: "🖼️", descKey: "lwhat-haet-daaeyh-ltzyyn-almkatb-walsalat" },
+  { nameKey: "saaat-haet", icon: "🕐", descKey: "saaat-haet-mtbwah-bshaark-hdyh-amlyh-wanyqh" },
 ];
 
 const galleryImages = [
@@ -20,11 +21,21 @@ const galleryImages = [
   "/images/gift-6.jpg",
 ];
 
+// 💡 مصفوفة نقاط الأهمية بمفاتيح نظيفة أيضاً للترجمة الديناميكية بالأسفل
+const promoPoints = [
+  { icon: "💡", titleKey: "tazyz-alway-balalamh", descKey: "ytthkrk-alamyl-fy-kl-mrh-ystkhdm-alhdyh" },
+  { icon: "🤝", titleKey: "bnaa-alwlaa", descKey: "hdyh-tab-r-an-alahtmam-wtam-q-alalaqh-ma-alamyl" },
+  { icon: "📣", titleKey: "tswyq-mjany", descKey: "alhdyh-alty-tura-ywmyaan-hy-ialan-mthrk-lamlk" },
+];
+
 export default async function GiftsPage(
   props: { params: Promise<{ locale: string }> }
 ) {
   const { locale } = await props.params;
   setRequestLocale(locale);
+
+  // 💡 جلب دالة الترجمة المتوافقة مع السيرفر وNext.js 15
+  const t = await getTranslations();
 
   return (
     <div className="w-full">
@@ -43,13 +54,13 @@ export default async function GiftsPage(
         />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1 rounded-full mb-6 border border-white/30">
-            خدماتنا
+            {t('khdmatna')}
           </span>
           <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            🎁 هدايا دعائية
+            🎁 {t('hdaya-daaeyh')}
           </h1>
           <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-            نظراً لأهمية المواد الدعائية — هي هدية يحتفظ بها العميل، نختار أنسب الهدايا من أجمل المواد الدعائية بما يتناسب مع كل عميل.
+           {t('nzraan-lahmyh-almwad-aldaaeyh')} — {t('hy-hdyh-yhtfz-bha-alamyl-nkhtar-ansb-alhdaya-mn-ajml-almwad-aldaaeyh-bma-ytnasb-ma-kl-amyl')}
           </p>
         </div>
       </section>
@@ -58,10 +69,10 @@ export default async function GiftsPage(
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">أشكال الهدايا الدعائية</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('ashkal-alhdaya-aldaaeyh')}</h2>
             <div className="w-24 h-1.5 bg-brand-pink mx-auto rounded-full" />
             <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-              باقة متكاملة من الهدايا الدعائية التي تعكس هوية علامتك التجارية وتبقى في ذاكرة عملائك
+             {t('baqh-mtkamlh-mn-alhdaya-aldaaeyh-alty-taks-hwyh-alamtk-altjaryh-wtbqa-fy-thakrh-amlaek')}
             </p>
           </div>
 
@@ -74,8 +85,9 @@ export default async function GiftsPage(
                 <div className="w-16 h-16 bg-brand-blue/10 dark:bg-brand-blue/20 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                   {gift.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-slate-900 dark:text-white">{gift.name}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{gift.desc}</p>
+                {/* 💡 ترجمة الاسم والوصف من المفاتيح ديناميكياً */}
+                <h3 className="text-lg font-bold mb-2 text-slate-900 dark:text-white">{t(gift.nameKey)}</h3>
+                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{t(gift.descKey)}</p>
               </div>
             ))}
           </div>
@@ -86,18 +98,15 @@ export default async function GiftsPage(
       <section className="py-16 bg-gradient-to-br from-brand-blue to-brand-pink text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-4">لماذا الهدايا الدعائية؟</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('lmatha-alhdaya-aldaaeyh')}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[
-              { icon: "💡", title: "تعزيز الوعي بالعلامة", desc: "يتذكرك العميل في كل مرة يستخدم الهدية" },
-              { icon: "🤝", title: "بناء الولاء", desc: "هدية تعبّر عن الاهتمام وتعمّق العلاقة مع العميل" },
-              { icon: "📣", title: "تسويق مجاني", desc: "الهدية التي تُرى يومياً هي إعلان متحرك لعملك" },
-            ].map((point, i) => (
+            {promoPoints.map((point, i) => (
               <div key={i} className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <div className="text-4xl mb-3">{point.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{point.title}</h3>
-                <p className="text-white/80 text-sm">{point.desc}</p>
+                {/* 💡 ترجمة نقطة الأهمية ووصفها هنا بأمان */}
+                <h3 className="text-xl font-bold mb-2">{t(point.titleKey)}</h3>
+                <p className="text-white/80 text-sm">{t(point.descKey)}</p>
               </div>
             ))}
           </div>
@@ -108,7 +117,7 @@ export default async function GiftsPage(
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">من أعمالنا</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('mn-aamalna')}</h2>
             <div className="w-24 h-1.5 bg-brand-blue mx-auto rounded-full" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -130,9 +139,9 @@ export default async function GiftsPage(
       {/* CTA */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900/50 text-center border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">مهتم بهدايا دعائية لشركتك؟</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('mhtm-bhdaya-daaeyh-lshrktk')}</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
-            تواصل معنا عبر واتساب وسنساعدك في اختيار أنسب الهدايا لعملائك
+           {t('twasl-mana-abr-watsab-wsnsaadk-fy-akhtyar-ansb-alhdaya-lamlaek')}
           </p>
           <a
             href="https://wa.me/201029769707"
@@ -140,7 +149,7 @@ export default async function GiftsPage(
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform"
           >
-            💬 تواصل عبر واتساب
+            💬 {t('twasl-abr-watsab')}
           </a>
         </div>
       </section>

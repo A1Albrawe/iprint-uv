@@ -7,9 +7,8 @@ import { Link, usePathname } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 
 export default function HomeContent() {
-  const tHero = useTranslations("Hero");
-  const tServices = useTranslations("Services");
-  const tClients = useTranslations("Clients");
+  // 💡 تم استخدام دالة t عامة واحدة لتتمكن من قراءة جميع المفاتيح في الصفحة وفي الكروت بدون أخطاء
+  const t = useTranslations();
   const locale = useLocale();
 
   const isRtl = locale === "ar";
@@ -27,14 +26,6 @@ export default function HomeContent() {
       transition: { staggerChildren: 0.2 }
     }
   };
-
-  const services = [
-    { key: "advertising", icon: "📢" },
-    { key: "uvPrinting", icon: "🖨️" },
-    { key: "indoorPrinting", icon: "🖼️" },
-    { key: "digitalPrinting", icon: "⚡" },
-    { key: "design", icon: "🎨" },
-  ];
 
   const clients = [
     { name: "Coca-Cola", logo: "/clients/coca-cola.png" },
@@ -74,11 +65,11 @@ export default function HomeContent() {
             </motion.div>
             
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 drop-shadow-lg">
-              {tHero("title")}
+              {t("Hero.title")}
             </motion.h1>
             
             <motion.p variants={fadeIn} className="text-xl md:text-2xl font-medium mb-10 max-w-3xl mx-auto opacity-90">
-              {tHero("subtitle")}
+              {t("Hero.subtitle")}
             </motion.p>
           </motion.div>
         </div>
@@ -97,7 +88,7 @@ export default function HomeContent() {
             variants={fadeIn}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">{tServices("title")}</h2>
+            <h2 className="text-4xl font-bold mb-4">{t("Services.title")}</h2>
             <div className="w-24 h-1.5 bg-brand-pink mx-auto rounded-full" />
           </motion.div>
 
@@ -117,12 +108,12 @@ export default function HomeContent() {
                 <div className="w-20 h-20 bg-brand-blue/10 text-brand-blue rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300">
                   🖨️
                 </div>
-                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">مطبوعات</h3>
+                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">{t('mtbwaat')}</h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                  كروت، بروشور، فلايرز، منيو، مطبوعات مطاعم وشركات بجودة عالية وأسعار منافسة
+                 {t('krwt-brwshwr-flayrz-mnyw-mtbwaat-mtaam-wshrkat-bjwdh-aalyh-wasaar-mnafsh')}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-brand-blue font-bold text-sm group-hover:gap-2 transition-all">
-                  اعرف أكثر ←
+                 {t('aarf-akthr')}
                 </span>
               </Link>
             </motion.div>
@@ -136,12 +127,12 @@ export default function HomeContent() {
                 <div className="w-20 h-20 bg-brand-pink/10 text-brand-pink rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 group-hover:bg-brand-pink group-hover:text-white transition-all duration-300">
                   🖼️
                 </div>
-                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">يفط ولافتات</h3>
+                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">{t('yft-wlaftat')}</h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                  لافتات إرشادية معدنية وبلاستيكية، استاندات عرض Rollup وPopup وX-Banner
+                 {t('laftat-irshadyh-madnyh-wblastykyh-astandat-ardh')} Rollup وPopup وX-Banner
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-brand-pink font-bold text-sm group-hover:gap-2 transition-all">
-                  اعرف أكثر ←
+                 {t('aarf-akthr')}
                 </span>
               </Link>
             </motion.div>
@@ -155,12 +146,12 @@ export default function HomeContent() {
                 <div className="w-20 h-20 bg-brand-yellow/20 text-yellow-600 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 group-hover:bg-brand-yellow group-hover:text-slate-900 transition-all duration-300">
                   🎁
                 </div>
-                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">هدايا دعائية</h3>
+                <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white">{t('hdaya-daaeyh')}</h3>
                 <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                  أقلام، مجات، تيشرتات، كابات، ميداليات وساعات حائط مطبوعة بهويتك
+                 {t('aqlam-mjat-mydalyat-wsaaat-haet-mtbwah-bhwytk')}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-yellow-600 font-bold text-sm group-hover:gap-2 transition-all">
-                  اعرف أكثر ←
+                 {t('aarf-akthr')}
                 </span>
               </Link>
             </motion.div>
@@ -178,7 +169,7 @@ export default function HomeContent() {
             variants={fadeIn}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">{tClients("title")}</h2>
+            <h2 className="text-3xl font-bold mb-4">{t("Clients.title")}</h2>
           </motion.div>
 
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 transition-all duration-500">
@@ -202,7 +193,6 @@ export default function HomeContent() {
                     alt={client.name} 
                     className="h-16 md:h-20 w-auto object-contain"
                     onError={(e) => {
-                      // Fallback to text if image is missing
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentElement!.innerHTML = `<span class="text-2xl font-black text-slate-400 dark:text-slate-500 hover:text-brand-blue dark:hover:text-brand-yellow transition-colors">${client.name}</span>`;
                     }}

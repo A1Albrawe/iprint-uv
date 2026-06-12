@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "extract-messages": "formatjs extract \"src/**/*.tsx\" --out-file messages/extracted.json --id-interpolation-pattern \"[sha512:contenthash:base64:6]\""
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.1",
@@ -22,6 +23,7 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@formatjs/cli": "^6.16.11",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

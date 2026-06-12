@@ -1,20 +1,21 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
+// 💡 جعل المصفوفة تحتوي على المفاتيح فقط بدون استدعاء الدالة t هنا لمنع انهيار السيرفر
 const printCategories = [
   {
-    title: "الكروت والمطبوعات التجارية",
+    titleKey: "alkrwt-walmtbwaat-altjaryh",
     icon: "🪪",
-    items: ["الكروت الشخصية", "بروشور", "فولدر", "فلايرز", "بوستر", "كتالوجات", "مجلات"],
+    itemKey: "alkrwt-alshkhsyh-brwshwr-fwldr-flayrz-bwstr-ktalwjat-mjlat",
   },
   {
-    title: "مطبوعات المكاتب والشركات",
+    titleKey: "mtbwaat-almkatb-walshrkat",
     icon: "🏢",
-    items: ["خطاب شركة", "أظرف", "نتيجة مكتب", "نتيجة حائط", "أجندات", "بلوك نوت", "دفاتر الفواتير والايصالات"],
+    itemKey: "khtab-shrkh-azrf-ntyjh-mktb-ntyjh-haet-ajndat-blwk-nwt-dfatr-alfwatyr-walaysalat",
   },
   {
-    title: "المطبوعات التعليمية والترويجية",
+    titleKey: "almtbwaat-altalymyh-waltrwyjyh",
     icon: "📚",
-    items: ["كتب جامعات", "إمساكيات رمضان", "علبة مناديل", "العلب", "ماجناتيك", "كوستر فل"],
+    itemKey: "ktb-jamaat-imsakyat-rmdhan-albh-mnadyl-alalb-majnatyk-kwstr-fl",
   },
 ];
 
@@ -33,6 +34,9 @@ export default async function PrintsPage(
   const { locale } = await props.params;
   setRequestLocale(locale);
 
+  // 💡 جلب دالة الترجمة الخاصة بالسيرفر
+  const t = await getTranslations();
+
   return (
     <div className="w-full">
       {/* Hero */}
@@ -40,13 +44,13 @@ export default async function PrintsPage(
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=1920&q=40')", backgroundSize: "cover" }} />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1 rounded-full mb-6 border border-white/30">
-            خدماتنا
+           {t('khdmatna')}
           </span>
           <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            المطبوعات الدعائية
+           {t('almtbwaat-aldaaeyh')}
           </h1>
           <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-            من أهم وسائل الدعاية — نتميّز في تنفيذ المطبوعات بجودة عالية، شكل مميز، وأسعار منافسة.
+           {t('mn-ahm-wsael-aldaayh-ntmy-z-fy-tnfyth-almtbwaat-bjwdh-aalyh-shkl-mmyz-wasaar-mnafsh')}
           </p>
         </div>
       </section>
@@ -55,7 +59,7 @@ export default async function PrintsPage(
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">ما نقدمه</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('ma-nqdmh')}</h2>
             <div className="w-24 h-1.5 bg-brand-pink mx-auto rounded-full" />
           </div>
 
@@ -68,14 +72,14 @@ export default async function PrintsPage(
                 <div className="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-3xl mb-5 group-hover:scale-110 transition-transform">
                   {cat.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">{cat.title}</h3>
+                {/* 💡 ترجمة العنوان هنا بعدما تم تعريف الدالة t بالأسفل */}
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">{t(cat.titleKey)}</h3>
                 <ul className="space-y-2">
-                  {cat.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-pink flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
+                  <li className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-pink flex-shrink-0" />
+                    {/* 💡 ترجمة العناصر الفرعية بشكل ديناميكي صحيح */}
+                    {t(cat.itemKey)}
+                  </li>
                 </ul>
               </div>
             ))}
@@ -87,7 +91,7 @@ export default async function PrintsPage(
       <section className="py-20 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-4">من أعمالنا</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('mn-aamalna')}</h2>
             <div className="w-24 h-1.5 bg-brand-blue mx-auto rounded-full" />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -109,15 +113,15 @@ export default async function PrintsPage(
       {/* CTA */}
       <section className="py-20 bg-background text-center">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">هل تحتاج مطبوعات لعملك؟</h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">تواصل معنا عبر واتساب وسنقدم لك أفضل عرض سعر فوراً</p>
+          <h2 className="text-3xl font-bold mb-4">{t('hl-thtaj-mtbwaat-lamlk')}</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">{t('twasl-mana-abr-watsab-wsnqdm-lk-afdhl-ardh-sar-fwraan')}</p>
           <a
             href="https://wa.me/201029769707"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 transform"
           >
-            💬 تواصل عبر واتساب
+            💬 {t('twasl-abr-watsab')}
           </a>
         </div>
       </section>
