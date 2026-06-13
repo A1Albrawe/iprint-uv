@@ -51,6 +51,20 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        
+        <div className="relative w-full h-20 bg-gray-900">
+
+  <a 
+    href="https://t.me/I_ALBRAWE" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="absolute bottom-4 right-6 text-right select-none block hover:opacity-80 transition-opacity"
+  >
+    <div className="text-[10px] text-gray-400 tracking-wider">POWERED BY</div>
+    <div className="text-sm font-bold text-gray-400">AL-BRAWE</div>
+    <div className="text-[10px] text-gray-500 mt-0.5">(البراوي)</div>
+  </a>
+</div>
 
         <div className="border-t border-slate-800 pt-8 text-center text-sm">
           &copy; {new Date().getFullYear()} iPrint. All rights reserved.
