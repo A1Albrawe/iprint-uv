@@ -10,6 +10,7 @@ import Loader from '@/components/Loader'; // 1. استدعاء اللودر
 import '../globals.css';
 import type { Metadata } from 'next';
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
@@ -51,6 +52,8 @@ export default async function LocaleLayout(
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
