@@ -51,6 +51,7 @@ export default async function LocaleLayout(
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
