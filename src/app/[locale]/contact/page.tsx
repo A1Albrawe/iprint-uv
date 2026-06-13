@@ -27,7 +27,7 @@ export default async function Contact(
               <MapPin size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">{t('Contact.title')}</h3>
+              <h3 className="text-lg font-bold">{t('address')}</h3>
               <p className="text-slate-600 dark:text-slate-400 mt-1">{t('Contact.address')}</p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default async function Contact(
               <Phone size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">{t('Contact.phone')}</h3>
+              <h3 className="text-lg font-bold">{t('phone')}</h3>
               <p className="text-slate-600 dark:text-slate-400 mt-1" dir="ltr">{t('Contact.phone')}</p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default async function Contact(
               <Mail size={24} />
             </div>
             <div>
-              <h3 className="text-lg font-bold">{t('Contact.email')}</h3>
+              <h3 className="text-lg font-bold">{t('email')}</h3>
               <p className="text-slate-600 dark:text-slate-400 mt-1">{t('Contact.email')}</p>
             </div>
           </div>
@@ -55,8 +55,8 @@ export default async function Contact(
 
         {/* WhatsApp CTA */}
         <div className="bg-gradient-to-br from-brand-blue to-brand-pink p-8 rounded-3xl text-white shadow-xl flex flex-col justify-center items-center text-center">
-          <h2 className="text-3xl font-bold mb-4">{t('mhtm-bhdaya-daaeyh-lshrktk')}</h2>
-          <p className="mb-8 opacity-90 text-lg">{t('twasl-mana-abr-watsab-wsnsaadk-fy-akhtyar-ansb-alhdaya-snansb-alhdaya-lamlaek')}</p>
+          <h2 className="text-3xl font-bold mb-4">{t('redy')}</h2>
+          <p className="mb-8 opacity-90 text-lg">{t('sos')}</p>
           <a 
             href={whatsappUrl}
             target="_blank"

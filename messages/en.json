@@ -53,7 +53,7 @@
   "mwqana": "Our Location",
   "designs-and-printing-house-high-quality-continuity-fast-execution": "Design & Printing House. High quality, continuity, fast execution.",
   "baqh-mtkamlh-mn-alhdaya-aldaaeyh-alty-taks-hwyh-alamtk-altjaryh-wtbqa-fy-thakrh-amlaek": "An integrated package of promotional gifts that reflect your brand identity and stay in your customers' memory.",
-"twasl-mana-abr-watsab-wsnsaadk-fy-akhtyar-ansb-alhdaya-lamlaek": "Contact us via WhatsApp and we will help you choose the most suitable gifts for your clients.",
+  "twasl-mana-abr-watsab-wsnsaadk-fy-akhtyar-ansb-alhdaya-lamlaek": "Contact us via WhatsApp and we will help you choose the most suitable gifts for your clients.",
   "greater-than-mwqana-ala-alkhryth": "Our Location on the Map",
   "mwqana-ala-alkhryth": "Our Location on the Map",
   "32-abd-alazyz-alsyd-alhaykstb-qsm-alnzhh-alqahrh": "32 Abdel Aziz Al Sayed, El Haykestep, El Nozha, Cairo",
@@ -130,5 +130,10 @@
     "title": "ABOUT US ...",
     "paragraph1": "We're offering a full range of services for almost Products Of Paper. We are brand supporters and the strategic partners of our clients. Thinking outside of the box and continuously challenging our previous successes is the essence of I PRINT. Our team of creative and innovative employees is constantly seeking new opportunities and niches to be filled within the industry by believing in our clients and ourselves; we become the brand.",
     "paragraph2": "Established in 2013, I PRINT has been dedicated to expanding within the Printing industry in Egypt. Over the years, we have managed to place ourselves alongside many of the top Printing houses in the country."
-  }
+  },
+  "phone": "Phone",
+  "address": "Address",
+  "email": "Email",
+  "redy": "Ready to start?",
+  "sos": "Send us a message on WhatsApp and we will get back to you immediately"
 }

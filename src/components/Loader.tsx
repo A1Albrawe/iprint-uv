@@ -9,10 +9,10 @@ export default function Loader() {
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
 
-  // هذا الجزء يجعل اللودر يظهر عند تغيير الصفحة
   useEffect(() => {
+    // إظهار اللودر عند تغيير المسار
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 1000); // مدة ظهور اللودر (ثانية واحدة)
+    const timer = setTimeout(() => setLoading(false), 1000); 
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -28,7 +28,14 @@ export default function Loader() {
             animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Image src="/about-image.png" alt="Loading" width={200} height={100} />
+            <Image 
+              src="/about-image.png" 
+              alt="Loading" 
+              width={200} 
+              height={100} 
+              priority={true} // الأولوية القصوى لمنع التحذيرات
+              className="w-auto h-auto" // حل مشكلة الأبعاد في سجلات النظام
+            />
           </motion.div>
         </motion.div>
       )}
