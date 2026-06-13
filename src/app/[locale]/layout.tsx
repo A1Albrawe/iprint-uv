@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import Loader from '@/components/Loader'; // 1. استدعاء اللودر
 import '../globals.css';
 import type { Metadata } from 'next';
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
